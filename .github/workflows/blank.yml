@@ -8,5 +8,5 @@ jobs:
         run: echo "Welcome to github actions"
       - name: multiple commands step
         run: |
-          echo"pwd"
+          echo "pwd"
           echo "whoami"
