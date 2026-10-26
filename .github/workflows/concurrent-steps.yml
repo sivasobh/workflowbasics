@@ -1,0 +1,20 @@
+name: concurrent-workflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Build step
+         run: echo "Building...."
+  test:
+     runs-on: ubuntu-22.04
+     steps:
+       - name: Test phase
+         run: echo "Testing...."
+  monitor:
+     runs-on: ubuntu-22.04
+     steps:
+       - name: Monitoring phase
+         run: echo "Monitoring...."
+         
+        
