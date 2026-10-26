@@ -8,14 +8,16 @@ jobs:
          run: echo "Building...."
   test:
      runs-on: ubuntu-22.04
+     needs: build
      steps:
        - name: Test phase
          run: echo "Testing...."
-         needs: build
+         
   monitor:
      runs-on: ubuntu-22.04
+     needs: test
      steps:
        - name: Monitoring phase
          run: echo "Monitoring...."
-         needs: test
+         
          
