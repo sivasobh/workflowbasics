@@ -1,23 +1,24 @@
-name: concurrent-workflow
+name: sequential-workflow
 on: push
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-       - name: Build step
-         run: echo "Building...."
+      - name: Build step
+        run: echo "Building...."
+
   test:
-     runs-on: ubuntu-22.04
-     needs: build
-     steps:
-       - name: Test phase
-         run: echo "Testing...."
-         
-  monitor:
-     runs-on: ubuntu-22.04
-     needs: test
-     steps:
-       - name: Monitoring phase
-         run: echo "Monitoring...."
-         
-         
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Test phase
+        run: echo "Testing...."
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploying phase
+        run: echo "Deploying...."
